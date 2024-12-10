@@ -19,17 +19,16 @@
                 <li><a>Item 3</a></li>
             </ul>
         </div>
-        <a class="btn btn-ghost text-xl">daisyUI</a>
+        <a class="btn btn-ghost text-xl" href="{{ route('home') }}">daisyUI</a>
     </div>
     <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal px-1">
             <li><a>Item 1</a></li>
             <li>
-                <details>
-                    <summary>Parent</summary>
+                <details class="z-10">
+                    <summary>Admin</summary>
                     <ul class="p-2">
-                        <li><a>Submenu 1</a></li>
-                        <li><a>Submenu 2</a></li>
+                        <li><a href="{{ route('posts.index') }}">Posts</a></li>
                     </ul>
                 </details>
             </li>
@@ -37,13 +36,15 @@
         </ul>
     </div>
     <div class="navbar-end gap-2">
-        <a href="{{ route('register') }}" class="btn btn-primary">Register</a>
-        <a href="{{ route('login') }}" class="btn btn-secondary">Login</a>
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
-
-            <button type="submit" class="btn btn-warning">Log Out</button>
-
-        </form>
+        @auth
+            <a href="{{ route('dashboard') }}" class="btn btn-secondary">Dashboard</a>
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-primary">Logout</button>
+            </form>
+        @else
+            <a href="{{ route('register') }}" class="btn btn-primary">Register</a>
+            <a href="{{ route('login') }}" class="btn btn-secondary">Login</a>
+        @endauth
     </div>
-</div>`
+</div>
