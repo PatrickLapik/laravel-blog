@@ -6,7 +6,7 @@
             <label class="label">
                 <span class="label-text">Comment</span>
             </label>
-            <textarea name="body" class="textarea h-24 textarea textarea-bordered" placeholder="Your comment here"></textarea>
+            <textarea name="body" class="textarea h-24 textarea-bordered" placeholder="Your comment here"></textarea>
         </div>
         <input type="hidden" name="user_id" value="{{ Auth::user()->id }}" class="input input-bordered">
         <div class="form-control mt-6">
